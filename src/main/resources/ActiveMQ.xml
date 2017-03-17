@@ -58,4 +58,5 @@
     </jms:listener-container>
 
     <!-- 消息消费者 end -->
+
 </beans>

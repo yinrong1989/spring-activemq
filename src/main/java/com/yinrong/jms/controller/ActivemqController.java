@@ -32,7 +32,7 @@ public class ActivemqController {
 	 * @return String
 	 */
 	@ResponseBody
-	@RequestMapping("queueSender")
+	@RequestMapping("/queueSender")
 	public String queueSender(@RequestParam("message")String message){
 		String opt="";
 		try {

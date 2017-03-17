@@ -24,7 +24,7 @@
     <mvc:resources location="/resources/" mapping="/resources/**"/>
     
     <!-- 指定Sping组件扫描的基本包路径 -->
-    <context:component-scan base-package="com.tgb" >
+    <context:component-scan base-package="com.yinrong.jms" >
     	<!-- 这里只扫描Controller，不可重复加载Service -->
     	<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>

@@ -10,6 +10,8 @@ import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessageCreator;
 import org.springframework.stereotype.Component;
 
+import java.io.Serializable;
+
 /**
  * 
  * @author liang
@@ -26,16 +28,34 @@ public class TopicSender {
 	
 	/**
 	 * 发送一条消息到指定的队列（目标）
-	 * @param queueName 队列名称
+	 * @param topicName 名称
 	 * @param message 消息内容
 	 */
 	public void send(String topicName,final String message){
 		jmsTemplate.send(topicName, new MessageCreator() {
-			@Override
 			public Message createMessage(Session session) throws JMSException {
 				return session.createTextMessage(message);
 			}
 		});
 	}
+	/**
+	 * 发送一条消息到指定的队列（目标）
+	 * @param topicName 名称
+	 * @param message 消息内容
+	 */
+	public void send(String topicName, final Object message){
+		jmsTemplate.send(topicName, new MessageCreator() {
+            public Message createMessage(Session session) throws JMSException {
+                if (message instanceof String) {
+                    return session.createTextMessage((String) message);
+                }else if (message instanceof Serializable){
+                    return session.createObjectMessage((Serializable) message);
+                }
+                else {
+                    return session.createMessage();
+                }
 
+            }
+        });
+	}
 }

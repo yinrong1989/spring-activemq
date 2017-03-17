@@ -42,6 +42,7 @@
   <!-- Spring Application Context Listener Start -->
   <context-param>
     <param-name>contextConfigLocation</param-name>
+    <!--<param-value>classpath*:applicationContext.xml,classpath*:ActiveMQ.xml</param-value>-->
     <param-value>classpath*:applicationContext.xml,classpath*:ActiveMQ.xml</param-value>
   </context-param>
   <listener>
